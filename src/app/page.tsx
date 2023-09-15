@@ -1,4 +1,4 @@
-import { UserProfile } from '@/app/_components';
+import { GoogleLoginButton, UserProfile } from '@/app/_components';
 import type { Session } from 'next-auth';
 import { headers } from 'next/headers';
 import type { JSX } from 'react';
@@ -52,7 +52,7 @@ export default async function Home(): Promise<JSX.Element> {
           avatarUrl={session.user.image}
         />
       ) : (
-        ''
+        <GoogleLoginButton />
       )}
     </main>
   );

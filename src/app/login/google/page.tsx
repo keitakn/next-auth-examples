@@ -1,5 +1,5 @@
-import { GoogleLoginButton } from './_components';
 import type { NextPage } from 'next';
+import { GoogleLoginButton } from './_components';
 
 const GoogleLoginPage: NextPage = () => {
   return (

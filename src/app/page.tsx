@@ -1,5 +1,6 @@
 import {
   GoogleLoginButton,
+  LineLoginButton,
   LogoutButton,
   UserProfile,
 } from '@/app/_components';
@@ -59,7 +60,10 @@ export default async function Home(): Promise<JSX.Element> {
           <LogoutButton />
         </>
       ) : (
-        <GoogleLoginButton />
+        <span className="isolate inline-flex rounded-md shadow-sm">
+          <GoogleLoginButton />
+          <LineLoginButton />
+        </span>
       )}
     </main>
   );

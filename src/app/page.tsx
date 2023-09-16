@@ -1,4 +1,8 @@
-import { GoogleLoginButton, UserProfile } from '@/app/_components';
+import {
+  GoogleLoginButton,
+  LogoutButton,
+  UserProfile,
+} from '@/app/_components';
 import type { Session } from 'next-auth';
 import { headers } from 'next/headers';
 import type { JSX } from 'react';
@@ -46,11 +50,14 @@ export default async function Home(): Promise<JSX.Element> {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {isValidSession(session) ? (
-        <UserProfile
-          name={session.user.name}
-          email={session.user.email}
-          avatarUrl={session.user.image}
-        />
+        <>
+          <UserProfile
+            name={session.user.name}
+            email={session.user.email}
+            avatarUrl={session.user.image}
+          />
+          <LogoutButton />
+        </>
       ) : (
         <GoogleLoginButton />
       )}

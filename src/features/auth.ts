@@ -1,3 +1,5 @@
+import { db } from '@/db';
+import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import * as jose from 'jose';
 import type { DefaultSession, NextAuthOptions, Session, User } from 'next-auth';
 import type { DefaultJWT, JWT } from 'next-auth/jwt';
@@ -33,6 +35,10 @@ const isOidcProvider = (value: unknown): value is OidcProvider => {
 
 export const options: NextAuthOptions = {
   debug: true,
+  adapter: DrizzleAdapter(db),
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     GoogleProvider({
       clientId: String(process.env.GOOGLE_CLIENT_ID),

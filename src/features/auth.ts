@@ -52,6 +52,10 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+  // 必要に応じて https://next-auth.js.org/configuration/pages を参考に各ページをオーバーライドする
+  pages: {
+    signIn: '/login',
+  },
   callbacks: {
     session: async ({
       session,

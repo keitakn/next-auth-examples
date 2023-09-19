@@ -3,13 +3,23 @@
 import { signIn } from 'next-auth/react';
 import type { JSX, MouseEvent } from 'react';
 
-const handleLogin = async (event: MouseEvent<HTMLButtonElement>) => {
-  event.preventDefault();
-
-  await signIn('line');
+type Props = {
+  callbackUrl?: string;
 };
 
-export const LineLoginButton = (): JSX.Element => {
+export const LineLoginButton = ({ callbackUrl }: Props): JSX.Element => {
+  const handleLogin = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    if (callbackUrl != null) {
+      await signIn('line', { callbackUrl });
+
+      return;
+    }
+
+    await signIn('line');
+  };
+
   return (
     <button
       type="button"

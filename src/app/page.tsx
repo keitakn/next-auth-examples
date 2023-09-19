@@ -57,10 +57,10 @@ export default async function Home(): Promise<JSX.Element> {
             email={session.user.email}
             avatarUrl={session.user.image}
           />
-        <span className="isolate inline-flex rounded-md shadow-sm">
-          <GoogleLoginButton buttonText="Googleアカウントを連携" />
-          <LineLoginButton buttonText="LINEアカウントを連携" />
-        </span>
+          <span className="isolate inline-flex rounded-md shadow-sm">
+            <GoogleLoginButton buttonText="Googleアカウントを連携" />
+            <LineLoginButton buttonText="LINEアカウントを連携" />
+          </span>
           <LogoutButton />
         </>
       ) : (

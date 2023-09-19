@@ -36,7 +36,7 @@ export const accounts = mysqlTable(
   },
   (account) => ({
     compoundKey: primaryKey(account.provider, account.providerAccountId),
-    userIdIndex: index('account__userId__idx').on(account.userId),
+    userIdIndex: index('idx_account_01').on(account.userId),
   }),
 );
 
@@ -50,7 +50,7 @@ export const sessions = mysqlTable(
     expires: timestamp('expires', { mode: 'date' }).notNull(),
   },
   (session) => ({
-    userIdIndex: index('sessions__userId__idx').on(session.userId),
+    userIdIndex: index('idx_session_01').on(session.userId),
   }),
 );
 

@@ -23,7 +23,7 @@ async function fetchSession(cookie: string): Promise<Session | null> {
 type ValidSession = {
   user: {
     name: string;
-    email: string;
+    email?: string;
     image: string;
   };
   expires: string;
@@ -33,11 +33,7 @@ type ValidSession = {
 function isValidSession(session: Session | null): session is ValidSession {
   if (session) {
     // サンプルコードなので手抜きしているが実際はちゃんと型検査をする
-    if (
-      session.user?.name != null &&
-      session.user.email != null &&
-      session.user.image != null
-    ) {
+    if (session.user?.name != null && session.user.image != null) {
       return true;
     }
   }
@@ -54,7 +50,7 @@ export default async function Home(): Promise<JSX.Element> {
         <>
           <UserProfile
             name={session.user.name}
-            email={session.user.email}
+            email={session.user.email ?? ''}
             avatarUrl={session.user.image}
           />
           <span className="isolate inline-flex rounded-md shadow-sm">
